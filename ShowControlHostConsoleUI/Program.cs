@@ -17,12 +17,12 @@ namespace ShowControlHostConsoleUI
         {
             // this creates the TCP connection and event handler
             link = new ThreeByte.Network.AsyncNetworkLink("localhost", 8080, true);
-            link.DataReceived += Link_DataReceived;
+            link.DataReceived += LinkOnDataReceived;
         }
 
-        private static void Link_DataReceived(object sender, EventArgs e)
+        private static void LinkOnDataReceived(object sender, EventArgs e)
         {
-            // do something with event handler later
+            throw new NotImplementedException();
         }
 
         static void SendSCSSingleTime()
