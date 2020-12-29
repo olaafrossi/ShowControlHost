@@ -22,14 +22,13 @@ namespace ShowControlHostConsoleUI
 
         private static void Link_DataReceived(object sender, EventArgs e)
         {
-            // do something with event handler
+            // do something with event handler later
         }
 
-        static void Main(string[] args)
+        static void SendSCSSingleTime()
         {
-            SetupSCS();
             string message = string.Empty;
-            message = "hello";
+            message = "hello\r";
             Thread.Sleep(1000);
             if (link.Enabled && link.IsConnected)
             {
@@ -41,7 +40,15 @@ namespace ShowControlHostConsoleUI
                 Console.WriteLine("SCS not connected");
             }
 
-            Console.WriteLine(message);
+            Console.WriteLine($"Sent to SCS {message}");
+        }
+
+        static void Main(string[] args)
+        {
+            SetupSCS();
+            SendSCSSingleTime();
+
+            //wait here
             Console.ReadLine();
         }
     }
