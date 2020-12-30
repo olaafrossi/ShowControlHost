@@ -43,10 +43,38 @@ namespace ShowControlHostConsoleUI
             Console.WriteLine($"Sent to SCS {message}");
         }
 
+        static void SendSCSMultiTime()
+        {
+            string message = string.Empty;
+            int messageAdder = 1;
+            
+            
+            Thread.Sleep(1000);
+            if (link.Enabled && link.IsConnected)
+            {
+                for (int i = 0; i < 200; i++)
+                {
+                    byte[] inputBytes = Encoding.ASCII.GetBytes(message); // new byte array and feed it the input string
+                    link.SendMessage(inputBytes); // send the byte array
+                    messageAdder++;
+                    message = $"hello{messageAdder}\r";
+                    Thread.Sleep(5);
+                    Console.WriteLine($"Sent to SCS {message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("SCS not connected");
+            }
+
+            // Console.WriteLine($"Sent to SCS {message}");
+        }
+
         static void Main(string[] args)
         {
             SetupSCS();
-            SendSCSSingleTime();
+            SendSCSMultiTime();
+            //SendSCSSingleTime();
 
             //wait here
             Console.ReadLine();
