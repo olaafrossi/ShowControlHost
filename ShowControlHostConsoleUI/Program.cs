@@ -48,7 +48,6 @@ namespace ShowControlHostConsoleUI
             string message = string.Empty;
             int messageAdder = 1;
             
-            
             Thread.Sleep(1000);
             if (link.Enabled && link.IsConnected)
             {
